@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRESS QUIZ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #questionsContainer, #resultContainer {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .question p {
+            font-size: 20px;
+            text-align: left; /* Align question text to the left */
+        }
+
+        .question label {
+            display: block;
+            font-size: 18px; /* Increase label size */
+            text-align: left; /* Align label text to the left */
+        }
+
+        .submit-btn {
+            display: block; /* Make the button block-level */
+            margin: 20px auto; /* Center the button horizontally */
+            padding: 10px 20px;
+            font-size: 18px; /* Increase button size */
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            font-size: 24px; /* Increase result size */
+            text-align: center; /* Center the result text */
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">STRESS QUIZ</h1>
+    <form id="quizForm">
+        <div id="questionsContainer">
+            <div class="question" id="question1">
+                <p>Bạn cảm thấy lo lắng khi khó khăn trong việc tìm kiếm tài liệu học tập hoặc không biết tham khảo tài liệu nào ?</p>
+                <label><input type="radio" name="q1" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q1" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q1" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q1" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(1)">Next</button>
+            </div>
+            <div class="question hidden" id="question2">
+                <p>Bạn cảm thấy bị ngợp khi thay đổi phương pháp học ?</p>
+                <label><input type="radio" name="q2" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q2" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q2" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q2" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(2)">Next</button>
+            </div>
+            <div class="question hidden" id="question3">
+                <p>Bạn cảm thấy áp lực từ việc thiếu hoặc thừa bài tập, tài liệu ?</p>
+                <label><input type="radio" name="q3" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q3" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q3" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q3" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(3)">Next</button>
+            </div>
+            <div class="question hidden" id="question4">
+                <p>Bạn đôi khi cảm thấy hay quên, đãng trí ?</p>
+                <label><input type="radio" name="q4" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q4" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q4" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q4" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(4)">Next</button>
+            </div>
+            <div class="question hidden" id="question5">
+                <p>Bạn thấy áp lực vì không cân bằng được việc học và những việc khác như làm thêm, câu lạc bộ,...?</p>
+                <label><input type="radio" name="q5" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q5" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q5" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q5" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(5)">Next</button>
+            </div>
+            <div class="question hidden" id="question6">
+                <p>Bạn cảm thấy không thoải mái mọi lúc ?</p>
+                <label><input type="radio" name="q6" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q6" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q6" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q6" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(6)">Next</button>
+            </div>
+            <div class="question hidden" id="question7">
+                <p>Bạn luôn suy nghĩ tiêu cực ?</p>
+                <label><input type="radio" name="q7" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q7" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q7" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q7" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(7)">Next</button>
+            </div>
+            <div class="question hidden" id="question8">
+                <p>Bạn có đang suy nghĩ quá nhiều việc không ?</p>
+                <label><input type="radio" name="q8" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q8" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q8" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q8" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(8)">Next</button>
+            </div>
+            <div class="question hidden" id="question9">
+                <p>Bạn có tự nghi ngờ bản thân mình không ?</p>
+                <label><input type="radio" name="q9" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q9" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q9" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q9" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(9)">Next</button>
+            </div>
+            <div class="question hidden" id="question10">
+                <p>Bạn có thường hay chán nản không ?</p>
+                <label><input type="radio" name="q10" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q10" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q10" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q10" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(10)">Next</button>
+            </div>
+            <div class="question hidden" id="question11">
+                <p>Bạn có thấy mình như bị mất đi động lực không ?</p>
+                <label><input type="radio" name="q11" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q11" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q11" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q11" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(11)">Next</button>
+            </div>
+            <div class="question hidden" id="question12">
+                <p>Bạn có cảm thấy bực tức khi người khác góp ý cho bạn không ?</p>
+                <label><input type="radio" name="q12" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q12" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q12" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q12" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(12)">Next</button>
+            </div>
+            <div class="question hidden" id="question13">
+                <p>Bạn thường xuyên rơi vào trạng thái hoảng loạn?</p>
+                <label><input type="radio" name="q13" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q13" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q13" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q13" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(13)">Next</button>
+            </div>
+            <div class="question hidden" id="question14">
+                <p>Bạn có cảm thấy mình khá tự ái không, cái tôi của bạn khá cao ?</p>
+                <label><input type="radio" name="q14" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q14" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q14" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q14" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(14)">Next</button>
+            </div>
+            <div class="question hidden" id="question15">
+                <p>Bạn hay cảm thấy tiếng tim mình đập nhanh dù đang không làm gì ?</p>
+                <label><input type="radio" name="q15" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q15" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q15" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q15" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(15)">Next</button>
+            </div>
+            <div class="question hidden" id="question16">
+                <p>Bạn cảm thấy sợ hãi vô cớ ?</p>
+                <label><input type="radio" name="q16" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q16" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q16" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q16" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(16)">Next</button>
+            </div>
+            <div class="question hidden" id="question17">
+                <p>Bạn có hay mất tập trung không ?</p>
+                <label><input type="radio" name="q17" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q17" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q17" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q17" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(17)">Next</button>
+            </div>
+            <div class="question hidden" id="question18">
+                <p>Bạn có cảm thấy như mình bị hoang tưởng ?</p>
+                <label><input type="radio" name="q18" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q18" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q18" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q18" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(18)">Next</button>
+            </div>
+            <div class="question hidden" id="question19">
+                <p>Bạn thường xuyên đau đầu, nhức đầu ?</p>
+                <label><input type="radio" name="q19" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q19" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q19" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q19" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(19)">Next</button>
+            </div>
+            <div class="question hidden" id="question20">
+                <p>Bạn thấy áp lực khi bị/được người khác đánh giá ?</p>
+                <label><input type="radio" name="q20" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q20" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q20" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q20" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(20)">Next</button>
+            </div>
+            <div class="question hidden" id="question21">
+                <p>Bạn đôi khi cảm thấy bất lực ?</p>
+                <label><input type="radio" name="q21" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q21" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q21" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q21" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(21)">Next</button>
+            </div>
+            <div class="question hidden" id="question22">
+                <p>Đôi khi bạn cảm thấy khó thở ?</p>
+                <label><input type="radio" name="q22" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q22" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q22" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q22" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(22)">Next</button>
+            </div>
+            <div class="question hidden" id="question23">
+                <p>Bạn đưa ra phán đoán khá chậm ?</p>
+                <label><input type="radio" name="q23" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q23" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q23" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q23" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(23)">Next</button>
+            </div>
+            <div class="question hidden" id="question24">
+                <p>Bạn đôi khi cảm thấy bị đè nặng bởi trách nhiệm của mình ?</p>
+                <label><input type="radio" name="q24" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q24" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q24" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q24" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="nextQuestion(24)">Next</button>
+            </div>
+            <div class="question hidden" id="question25">
+                <p>Đôi khi bạn bị mất kiểm soát hành vi ?</p>
+                <label><input type="radio" name="q25" value="1"> Không phải tôi</label>
+                <label><input type="radio" name="q25" value="2"> Có phần giống tôi</label>
+                <label><input type="radio" name="q25" value="3"> Khá giống tôi</label>
+                <label><input type="radio" name="q25" value="4"> Chính là tôi</label>
+                <button type="button" class="submit-btn" onclick="calculateResult()">Finish</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="resultContainer" class="hidden">
+        <div class="result" id="resultText"></div>
+        <button class="submit-btn" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+
+    <script>
+        let currentQuestion = 1;
+
+        function nextQuestion(questionNumber) {
+            const currentQuestionDiv = document.getElementById(`question${questionNumber}`);
+            const selectedOption = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+
+            // Check if the user has selected an answer
+            if (!selectedOption) {
+                alert("Hãy trả lời tất cả các câu hỏi.");
+                return; // Stop function execution if no answer is selected
+            }
+
+            // Move to the next question
+            currentQuestionDiv.classList.add('hidden');
+            currentQuestion++;
+
+            const nextQuestionDiv = document.getElementById(`question${currentQuestion}`);
+            if (nextQuestionDiv) {
+                nextQuestionDiv.classList.remove('hidden');
+            } else {
+                // If there are no more questions, show the result button
+                calculateResult();
+            }
+        }
+
+        function calculateResult() {
+            let score = 0;
+            for (let i = 1; i <= 25; i++) {
+                const selectedOption = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selectedOption) {
+                    score += parseInt(selectedOption.value);
+                }
+            }
+
+            const resultText = document.getElementById('resultText');
+            resultText.innerText = `Your score is: ${score}`;
+            document.getElementById('resultContainer').classList.remove('hidden');
+            document.getElementById('questionsContainer').classList.add('hidden');
+        }
+
+        function restartQuiz() {
+            currentQuestion = 1;
+            document.getElementById('resultContainer').classList.add('hidden');
+            document.getElementById('questionsContainer').classList.remove('hidden');
+
+            // Reset all questions
+            for (let i = 1; i <= 25; i++) {
+                document.querySelector(`input[name="q${i}"]:checked`).checked = false;
+                document.getElementById(`question${i}`).classList.add('hidden');
+            }
+            document.getElementById(`question1`).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
